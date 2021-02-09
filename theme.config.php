@@ -1,7 +1,7 @@
 <?php
 return [
     'extends' => 'bootstrap3',
-    'favicon' => 'aksearch-favicon.ico',
+    'favicon' => 'acdhch-favicon.ico',
     'helpers' => [
       'factories' => [
         'AkSearch\View\Helper\AkSearch\Datepicker' => 'AkSearch\View\Helper\AkSearch\DatepickerFactory',
@@ -22,7 +22,7 @@ return [
 
         // Overrides
         'VuFind\View\Helper\Root\Citation' => 'AkSearch\View\Helper\Root\Citation',
-        'VuFind\View\Helper\Root\Record' => 'AkSearch\View\Helper\Root\Record'
+        'VuFind\View\Helper\Root\Record' => 'AcdhchTheme\View\Helper\Root\Record'
       ]
     ],
     'js' => [

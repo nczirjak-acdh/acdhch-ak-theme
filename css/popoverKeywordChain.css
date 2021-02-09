@@ -1,0 +1,17 @@
+.popover-keyword-chain {
+    max-width: 80%;
+    width: inherit;
+}
+
+.popover-keyword-chain .popover-title {
+    font-weight: bold;
+}
+
+.popover-keyword-chain .popoverEntry:first-child {
+    margin-top: 5px;
+    margin-bottom: 12px;
+}
+
+.popover-keyword-chain .popoverEntry a {
+    margin-left: 8px;
+}

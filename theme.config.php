@@ -1,7 +1,7 @@
 <?php
 return [
     'extends' => 'bootstrap3',
-    'favicon' => 'acdhch-favicon.ico',
+    'favicon' => 'aksearch-favicon.ico',
     'helpers' => [
       'factories' => [
         'AkSearch\View\Helper\AkSearch\Datepicker' => 'AkSearch\View\Helper\AkSearch\DatepickerFactory',
@@ -31,7 +31,7 @@ return [
         'vendor/klaro/klaro.js'
     ],
     'less' => [
-        'active' => false,
+        'active' => true,
         'compiled.less'
     ]
 ];

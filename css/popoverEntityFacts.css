@@ -1,0 +1,55 @@
+.popover-entity-facts {
+    width: 430px !important;
+    max-width: 430px !important;
+}
+
+.popover-entity-facts .popover-title {
+    font-weight: bold;
+    padding: 8px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 430px;
+    white-space: nowrap;
+}
+
+.popover-entity-facts .popover-content {
+    padding: 8px;
+}
+
+.popover-entity-facts .arrow {
+    top: 39px !important;
+}
+
+.popover-entity-facts .fa-exclamation-triangle {
+    color: rgb(190, 0, 33);
+}
+
+.entity-fact-info-link, .entity-fact-info-link:hover, .entity-fact-info-link:active, .entity-fact-info-link:focus {
+    color: #333;
+    float: right;
+}
+
+.popover-entity-facts th, .popover-entity-facts td {
+    padding: 2px 5px 2px 5px;
+    vertical-align: top;
+}
+
+.popover-entity-facts tr:not(:last-child) {
+    border-bottom: solid 1px #ddd;
+}
+
+/* For small screens */
+@media (max-width:499px) {
+    .popover-entity-facts {
+        width: 290px !important;
+        max-width: 290px !important;
+    }
+    .popover-entity-facts .popover-content {
+        padding: 4px;
+        overflow: auto;
+    }
+    .popover-entity-facts th, .popover-entity-facts td {
+        padding: 2px;
+        vertical-align: top;
+    }
+}

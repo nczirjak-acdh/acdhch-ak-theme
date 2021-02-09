@@ -31,7 +31,7 @@ return [
         'vendor/klaro/klaro.js'
     ],
     'less' => [
-        'active' => false,
+        'active' => true,
         'compiled.less'
     ]
 ];

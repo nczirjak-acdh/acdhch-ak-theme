@@ -1,0 +1,8 @@
+<?php $heading = $this->transEsc('Warnings::'.$this->heading); ?>
+<div class="alert alert-warning">
+    <?php // Don't show an untranslated or empty string ?>
+    <?php if ($heading != $this->heading && !empty(trim($heading))): ?>
+        <h2><?=$heading?></h2>
+    <?php endif; ?>
+    <p><?=$this->translate('Warnings::'.$this->text)?></p>
+</div>

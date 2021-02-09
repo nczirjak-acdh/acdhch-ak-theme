@@ -1,0 +1,78 @@
+<?php
+    // TODO: Check for accessibility (WCAG / ARIA)
+
+    // AK: Add JavaScript translations for use in entity facts popover
+    $this->jsTranslations()->addStrings(
+      [
+        'preferredName' => 'EntityFacts::preferredName',
+        'variantNames' => 'EntityFacts::variantNames',
+        'pseudonyms' => 'EntityFacts::pseudonyms',
+        'realIdentities' => 'EntityFacts::realIdentities',
+        'dateOfBirth' => 'EntityFacts::dateOfBirth',
+        'placesOfBirth' => 'EntityFacts::placesOfBirth',
+        'dateOfDeath' => 'EntityFacts::dateOfDeath',
+        'placesOfDeath' => 'EntityFacts::placesOfDeath',
+        'gender' => 'EntityFacts::gender',
+        'male' => 'EntityFacts::male',
+        'female' => 'EntityFacts::female',
+        'unknown' => 'EntityFacts::unknown',
+        'academicDegrees' => 'EntityFacts::academicDegrees',
+        'titlesOfNobility' => 'EntityFacts::titlesOfNobility',
+        'placesOfActivity' => 'EntityFacts::placesOfActivity',
+        'affiliations' => 'EntityFacts::affiliations',
+        'occupations' => 'EntityFacts::occupations',
+        'biographicalOrHistoricalInformation' => 'EntityFacts::biographicalOrHistoricalInformation',
+        'isA' => 'EntityFacts::isA',
+        'founders' => 'EntityFacts::founders',
+        'datesOfEstablishment' => 'EntityFacts::datesOfEstablishment',
+        'datesOfTermination' => 'EntityFacts::datesOfTermination',
+        'placesOfBusiness' => 'EntityFacts::placesOfBusiness',
+        'topics' => 'EntityFacts::topics',
+        'isPartOf' => 'EntityFacts::isPartOf',
+        'predecessors' => 'EntityFacts::predecessors',
+        'successors' => 'EntityFacts::successors',
+        'relatedOrganisations' => 'EntityFacts::relatedOrganisations',
+        'homepages' => 'EntityFacts::homepages',
+        'sameAs' => 'EntityFacts::sameAs',
+        'notfound' => 'EntityFacts::notfound',
+        'serviceError' => 'EntityFacts::serviceError'
+      ]
+    );
+
+    // AK: Include bootstrap-popover JS and CSS
+    $this->headScript()->appendFile('vendor/bootstrap-popover/bootstrap.popover.min.js');
+    $this->headLink()->appendStylesheet('vendor/bootstrap-popover/bootstrap.popover.min.css');
+    $this->headLink()->appendStylesheet('popoverEntityFacts.css');
+    echo $this->inlineScript()->appendFile('popoverEntityFacts.js');
+?>
+
+
+<?php if (!empty($data)): ?>
+  <?php foreach ($data as $entries): ?>
+    <?php foreach ($entries as $authId => $name): ?>
+      <span class="author-data" property="<?=$this->escapeHtml($this->transEsc('CreatorRoles::'.$role))?>">
+        <a href="<?=$this->record($this->driver)->getLink('author', $name)?>">
+          <?=$this->escapeHtml($name)?>
+        </a>
+      </span>
+
+      <?php // AK: Add info button for entity facts ?>
+      <?php if ($authId != 'NoGndId'): ?>
+        <a
+        class="entity-fact-info-link"
+        tabindex="0"
+        role="button"
+        title="<?=trim($this->escapeHtmlAttr($this->transEsc('EntityFacts::moreInfomation')))?>"
+        data-trigger="focus"
+        data-toggle="popover-entity-facts"
+        data-auth-id="<?=trim($this->escapeHtmlAttr($this->escapeHtml($authId)))?>"
+        rel="nofollow"
+        >
+          <i class="fa fa-info-circle entity-fact-info-icon" aria-hidden="true"></i>
+        </a>
+      <?php endif; ?>
+
+      <br />
+    <?php endforeach; ?>
+  <?php endforeach; ?>
+<?php endif; ?>

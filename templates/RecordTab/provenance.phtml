@@ -1,0 +1,209 @@
+<?php
+$provs = $this->tab->getItemProvenance();
+$itemCounter = 0;
+?>
+
+<br />
+<?php // Button to close all panels that are not already closed ?>
+<a class="toolbar-btn" data-toggle="collapse" href=".collapse-all.in" style="float:left;"><?=$this->transEsc('close_all')?></a>
+
+<?php // Button to collapse all panels that are not already collapsed ?>
+<a class="toolbar-btn" data-toggle="collapse" data-target=".collapse-all:not(.in)" style="float:right;"><?=$this->transEsc('open_all')?></a>
+
+<?php // Clearer for button floats above ?>
+<div style="clear: both;">&nbsp;</div>
+
+<?php // Collapsible panel group ?>
+<div class="panel-group provPanelGroup" id="accordion" role="tablist" aria-multiselectable="false">
+
+    <?php foreach($provs as $prov): ?>
+        <?php
+        $itemCounter++;
+
+        // Classes and data values for the first collapsible that should initially be opened.
+        $itemInClass = ($itemCounter == 1) ? 'in' : '';
+        $itemAriaExpanded = ($itemCounter == 1) ? 'true' : 'false';
+        $itemCollapsedClass = ($itemCounter == 1) ? '' : 'collapsed';
+
+        // Get a hash that we use as panel id. Prefix with "id" as IDs should not start with a digit.
+        $itemHash = 'id'.md5('item'.$itemCounter);
+
+        $xmps = $prov['xmp'] ?? null;
+        $exls = $prov['exl'] ?? null; 
+        $bezs = $prov['bez'] ?? null;
+        ?>
+
+        <div class="panel panel-default provPanel">
+            <div class="panel-heading <?=$itemCollapsedClass?> provPanelHeading" role="tab" id="heading<?=$itemHash?>" data-toggle="collapse" data-target="#collapse<?=$itemHash?>" aria-expanded="<?=$itemAriaExpanded?>" aria-controls="collapse<?=$itemHash?>">
+                <h3 class="panel-title">
+                    <a role="button" class="accordion-toggle"><?=$this->transEsc('Copy')?> <?=$itemCounter?></a>
+                </h3>
+            </div>
+            <div id="collapse<?=$itemHash?>" class="panel-collapse collapse <?=$itemInClass?> collapse-all" role="tabpanel" aria-labelledby="heading<?=$itemHash?>">
+                <div class="panel-body provPanelBody">
+                    <?php if($xmps) :?>
+                        <h4><?=$this->transEsc('provenance_item_description')?></h4>
+                        <?php foreach($xmps as $xmp): ?>
+                            <table class="table">
+                                <tbody>
+                                    <?php if (isset($xmp['callNo'])): ?>
+                                        <tr>
+                                            <th><?=$this->transEsc('Call Number')?>:</th>
+                                            <td><?=$this->escapeHtml($xmp['callNo'])?></td>
+                                        </tr>
+                                    <?php endif; ?>
+                                    <?php if (isset($xmp['cover'])): ?>
+                                        <tr>
+                                            <th><?=$this->transEsc('Cover')?>:</th>
+                                            <td><?=$this->escapeHtml($xmp['cover'])?></td>
+                                        </tr>
+                                    <?php endif; ?>
+                                    <?php if (isset($xmp['notes'])): ?>
+                                        <tr>
+                                            <th><?=$this->transEsc('item_notes')?>:</th>
+                                            <td>
+                                                <?php if (count($xmp['notes'])>1): ?>
+                                                    <ul style="padding-left: 12px;">
+                                                        <?php foreach($xmp['notes'] as $note): ?>
+                                                            <li><?=$this->escapeHtml($note)?></li>
+                                                        <?php endforeach; ?>
+                                                    </ul>
+                                                <?php else: ?>
+                                                    <?=$this->escapeHtml($xmp['notes'][0])?>
+                                                <?php endif; ?>
+                                            </td>
+                                        </tr>
+                                    <?php endif; ?>
+                                    <?php if (isset($xmp['marginalia'])): ?>
+                                        <tr>
+                                            <th><?=$this->transEsc('marginalia')?>:</th>
+                                            <td><?=$this->escapeHtml($xmp['marginalia'])?></td>
+                                        </tr>
+                                    <?php endif; ?>
+                                    <?php if (isset($xmp['provenances'])): ?>
+                                        <tr>
+                                            <th><?=$this->transEsc('provenance')?>:</th>
+                                            <td>
+                                                <?php if (count($xmp['provenances'])>1): ?>
+                                                    <ul style="padding-left: 12px;">
+                                                        <?php foreach($xmp['provenances'] as $provenance): ?>
+                                                            <li><?=$this->escapeHtml($provenance)?></li>
+                                                        <?php endforeach; ?>
+                                                    </ul>
+                                                <?php else: ?>
+                                                    <?=$this->escapeHtml($xmp['provenances'][0])?>
+                                                <?php endif; ?>
+                                            </td>
+                                        </tr>
+                                    <?php endif; ?>
+                                    <?php if (isset($xmp['lootNote'])): ?>
+                                        <tr>
+                                            <th><?=$this->transEsc('loot_note')?>:</th>
+                                            <td><?=$this->escapeHtml($xmp['lootNote'])?></td>
+                                        </tr>
+                                    <?php endif; ?>
+                                    <?php if (isset($xmp['restitutionState'])): ?>
+                                        <tr>
+                                            <th><?=$this->transEsc('restitution_state')?>:</th>
+                                            <td><?=$this->escapeHtml($xmp['restitutionState'])?></td>
+                                        </tr>
+                                    <?php endif; ?>
+                                </tbody>
+                            </table>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+
+                    <?php if($exls) :?>
+                        <h4><?=$this->transEsc('exlibris_notes')?></h4>
+                        <?php foreach($exls as $exl): ?>
+                            <table class="table">
+                                <tbody>
+                                    <?php if (isset($exl['dimension'])): ?>
+                                        <tr>
+                                            <th><?=$this->transEsc('dimensions')?>:</th>
+                                            <td><?=$this->escapeHtml($exl['dimension'])?></td>
+                                        </tr>
+                                    <?php endif; ?>
+                                    <?php if (isset($exl['prevOwners'])): ?>
+                                        <tr>
+                                            <th><?=ucfirst($this->transEsc('CreatorRoles::fmo'))?>:</th>
+                                            <td>
+                                                <?php if (count($exl['prevOwners'])>1): ?>
+                                                    <ul style="padding-left: 12px;">
+                                                        <?php foreach($exl['prevOwners'] as $prevOwner): ?>
+                                                            <li><?=$this->escapeHtml($prevOwner)?></li>
+                                                        <?php endforeach; ?>
+                                                    </ul>
+                                                <?php else: ?>
+                                                    <?=$this->escapeHtml($exl['prevOwners'][0])?>
+                                                <?php endif; ?>
+                                            </td>
+                                        </tr>
+                                    <?php endif; ?>
+                                    <?php if (isset($exl['technology'])): ?>
+                                        <tr>
+                                            <th><?=$this->transEsc('technology')?>:</th>
+                                            <td><?=$this->escapeHtml($exl['technology'])?></td>
+                                        </tr>
+                                    <?php endif; ?>
+                                    <?php if (isset($exl['motifs'])): ?>
+                                        <tr>
+                                            <th><?=$this->transEsc('motif')?>:</th>
+                                            <td>
+                                                <?php if (count($exl['motifs'])>1): ?>
+                                                    <ul style="padding-left: 12px;">
+                                                        <?php foreach($exl['motifs'] as $motif): ?>
+                                                            <li><?=$this->escapeHtml($motif)?></li>
+                                                        <?php endforeach; ?>
+                                                    </ul>
+                                                <?php else: ?>
+                                                    <?=$this->escapeHtml($exl['motifs'][0])?>
+                                                <?php endif; ?>
+                                            </td>
+                                        </tr>
+                                    <?php endif; ?>
+                                    <?php if (isset($exl['text'])): ?>
+                                        <tr>
+                                            <th><?=$this->transEsc('Text')?>:</th>
+                                            <td><?=$this->escapeHtml($exl['text'])?></td>
+                                        </tr>
+                                    <?php endif; ?>
+                                </tbody>
+                            </table>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+
+                    <?php if($bezs) :?>
+                        <h4><?=$this->transEsc('related_persons_and_provenance_properties')?></h4>
+                        <?php foreach($bezs as $bez): ?>
+                            <table class="table">
+                                <tbody>
+                                    <?php if (isset($bez['name'])): ?>
+                                        <tr>
+                                            <th><?=ucfirst($this->transEsc((isset($bez['translateDomain'])) ? $bez['translateDomain'].'::'.$bez['role'] : $bez['role']))?>:</th>
+                                            <td>
+                                                <?php
+                                                // Conveniance var
+                                                $st = $bez['searchType'];
+                                                // Create options for generic link builder
+                                                $genericLinkOpts = [
+                                                    'phraseSearch' => true,
+                                                    'lookfor' => (($st == 'ProvenanceProperty') ? $bez['authId'] : $bez['name'].' '.$bez['role']),
+                                                    'searchType' => $bez['searchType']
+                                                ];
+                                                ?>
+                                                <a href="<?=$this->record($this->driver)->getLink('generic', $genericLinkOpts)?>">
+                                                    <?=$this->escapeHtml($bez['name'])?>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    <?php endif; ?>
+                                </tbody>
+                            </table>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+    <?php endforeach; ?>
+</div>

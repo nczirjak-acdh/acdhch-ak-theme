@@ -9,13 +9,5 @@
             "name": "Norbert Czirjak",
             "email": "norbert.czirjak@oeaw.ac.at"
         }
-    ],
-    "require": {
-        "php": ">=7"
-    },
-    "autoload": {
-        "psr-4": {
-            "AcdhchTheme\\": "src/acdhchTheme"
-        }
-    }
+    ]
 }

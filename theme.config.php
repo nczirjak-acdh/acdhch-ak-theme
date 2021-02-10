@@ -1,4 +1,6 @@
 <?php
+
+
 return [
     'extends' => 'bootstrap3',
     'favicon' => 'acdhch-favicon.ico',
@@ -22,7 +24,9 @@ return [
 
         // Overrides
         'VuFind\View\Helper\Root\Citation' => 'AkSearch\View\Helper\Root\Citation',
-        'VuFind\View\Helper\Root\Record' => 'acdhchTheme\View\Helper\Root\Record'
+        
+          'VuFind\View\Helper\Root\Record' => 'AkSearch\View\Helper\Root\Record',
+          #'VuFind\View\Helper\Root\Record' => 'AcdhchTheme\View\Helper\Root\Record',
       ]
     ],
     'js' => [

@@ -26,7 +26,7 @@
  * @link     https://vufind.org/wiki/development:plugins:view_helpers Wiki
  */
 
-namespace AcdhchTheme\View\Helper\Root;
+namespace acdhchTheme\View\Helper\Root;
 
 /**
  * AK: Extending record driver view helper

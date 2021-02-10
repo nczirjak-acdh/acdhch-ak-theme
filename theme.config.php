@@ -22,7 +22,7 @@ return [
 
         // Overrides
         'VuFind\View\Helper\Root\Citation' => 'AkSearch\View\Helper\Root\Citation',
-        'VuFind\View\Helper\Root\Record' => 'AcdhchTheme\View\Helper\Root\Record'
+        'VuFind\View\Helper\Root\Record' => 'acdhchTheme\View\Helper\Root\Record'
       ]
     ],
     'js' => [

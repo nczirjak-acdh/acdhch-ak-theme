@@ -2,9 +2,6 @@
   $user = $this->auth()->isLoggedIn();
   $patron = $user ? $this->auth()->getILSPatron() : false;
   $capabilityParams = $patron ? ['patron' => $patron] : [];
-  
-  var_dump("itt");
-  die();
   $ilsOnline = ('ils-none' !== $this->ils()->getOfflineMode());
 ?>
 

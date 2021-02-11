@@ -19,7 +19,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  *
- * @category AKsearch
+ * @category AcdhchTheme
  * @package  View_Helpers
  * @author   Michael Birkner <michael.birkner@akwien.at>
  * @license  https://opensource.org/licenses/gpl-2.0.php GNU General Public License
@@ -31,7 +31,7 @@ namespace AcdhchTheme\View\Helper\Root;
 /**
  * AK: Extending factory for record driver data formatting view helper
  *
- * @category AKsearch
+ * @category AcdhchTheme
  * @package  View_Helpers
  * @author   Michael Birkner <michael.birkner@akwien.at>
  * @license  https://opensource.org/licenses/gpl-2.0.php GNU General Public License

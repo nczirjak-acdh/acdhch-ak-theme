@@ -1,5 +1,5 @@
 /usr/local/vufind/themes/AcdhchTheme/less/compiled.less
-/usr/local/vufind/themes/AcdhchTheme/less/aksearch.less
+/usr/local/vufind/themes/AcdhchTheme/less/acdhchtheme.less
 /usr/local/vufind/themes/bootstrap3/less/bootstrap.less
 /usr/local/vufind/themes/bootstrap3/less/vendor/bootstrap/bootstrap.less
 /usr/local/vufind/themes/bootstrap3/less/vendor/bootstrap/variables.less
@@ -111,4 +111,4 @@
 /usr/local/vufind/themes/bootstrap3/less/components/similar-carousel.less
 /usr/local/vufind/themes/bootstrap3/less/components/sliders.less
 /usr/local/vufind/themes/AcdhchTheme/less/slideFacet.less
-lessphp_8467831870ccdd5a7c87ce0a6d5e7b11e8ca28c2.css
+lessphp_064453d91b51193339fca357ac162d885859b9ea.css

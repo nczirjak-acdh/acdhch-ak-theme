@@ -33,7 +33,7 @@ use Zend\ServiceManager\Factory\FactoryInterface;
 /**
  * AK: Warnings helper factory.
  *
- * @category AKsearch
+ * @category AcdhchTheme
  * @package  View_Helpers
  * @author   Michael Birkner <michael.birkner@akwien.at>
  * @license  https://opensource.org/licenses/gpl-2.0.php GNU General Public License

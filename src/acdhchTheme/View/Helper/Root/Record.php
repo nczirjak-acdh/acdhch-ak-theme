@@ -52,7 +52,7 @@ class Record extends \VuFind\View\Helper\Root\Record
      */
     public function getTitleHtml($maxLength = 180)
     {
-        
+        echo "getTitleHtml a themeben_ ";
         $highlightedTitle = $this->driver->tryMethod('getHighlightedTitle');
         
         // AK: Add title section to the main title, separated by colon from each

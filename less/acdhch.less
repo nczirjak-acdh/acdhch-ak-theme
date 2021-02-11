@@ -9,21 +9,14 @@
 
 // Custom variables
 @font-size-larger:        ceil((@font-size-base * 1.2));
-.active-filters .facet, .facet-group .active {
-    background-color: #6f757c;
-}
 
-.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
-    background-color: #88dbdf;
-    border-color: #88dbdf;
-}
 .navbar-brand {
     height: auto; // Making space for AKsearch Logo
     padding-left: 0; // Align AKsearch Logo with Search field
 }
 
 .akSearchboxBackground {
-    background: none repeat scroll 0 0 #88dbdf; // Background color
+    background: none repeat scroll 0 0 #be0021; // Background color
     padding: 8px 0 8px 0; // Padding top and bottom of red bar
     width: 100vw; // 100% viewport width - span bar on whole site width
     
@@ -126,14 +119,14 @@ header .search.container.navbar {
 .btn:not(.btn-link), .reset-filters-btn {
 	font-weight: bold;
 	color: #fff;
-	background-color: #6f757c;
+	background-color: #333;
 	border-color: #e0e0e0;
 }
 
 // Hover, focus and active layout for gray/red buttons
 .btn:not(.btn-link):hover, .btn:not(.btn-link):focus, .btn:not(.btn-link):active {
-	background-color: #88dbdf;
-	border-color: #6f757c;
+	background-color: #be0021;
+	border-color: #333;
 	color: #fff;
 	outline: none;
 }
@@ -142,7 +135,7 @@ header .search.container.navbar {
 // of our buttons is used (see general .btn style above). This is the hover,
 // focuse and acitve style. No visible changes will be seen on this actions.
 .reset-filters-btn:hover, .reset-filters-btn:active, .reset-filters-btn:focus {
-    background-color: #6f757c;
+    background-color: #333;
     color: #fff;
     text-decoration: none;
     outline: none;
@@ -151,7 +144,7 @@ header .search.container.navbar {
 // "Active filter" indicators in search bar. We use the dark-gray background color
 // of our buttons for them.
 .active-filters .filters .filter-value {
-	background: #6f757c;
+	background: #333;
 }
 
 // Style for the "remove" X for "active filter" indicators in the search bar
@@ -180,20 +173,20 @@ header .search.container.navbar {
 // field.
 .adv-search .adv-term-remove:hover {
     text-decoration: none;
-    color: #6f757c;
+    color: #333;
     opacity: .8;
 }
 
 // Style for handlers in slider for publication year filter
 .slider-container .slider-handle {
-	background: #6f757c;
-	border: 1px solid #6f757c;
+	background: #333;
+	border: 1px solid #333;
 }
 .slider-container .slider-handle:hover,
 .slider-container .slider-handle:active,
 .slider-container .slider-handle:focus {
-	background: #88dbdf;
-	border-color: #6f757c;
+	background: #be0021;
+	border-color: #333;
 }
 
 // A spacer between the title (including parent title) and the rest of the data in the results list
@@ -209,7 +202,7 @@ header .search.container.navbar {
 
 // Set color for star at "Add favourite" to gray
 .result-links .fa-star::before {
-	color: #6f757c;
+	color: #333;
 }
 
 // TODO: Here are some tests concerning shortening long lines in the results list with ellipsis. See file "result-list.phtml".
@@ -324,7 +317,7 @@ header .search.container.navbar {
 #searchForm .btn-primary {
     background-color: white;
     text-decoration: none;
-    color: #6f757c;
+    color: #333;
 }
 
 // Styling link to advanced search form
@@ -367,7 +360,7 @@ header .search.container.navbar {
 // Matomo Opt-Out iFrame on privacy page
 #matomoOptOut {
     border: grey thin solid;
-    color: #6f757c;
+    color: #333;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 14px;
     height: 200px;
@@ -390,7 +383,7 @@ header .search.container.navbar {
 // Set color for the password hint in the "create new user" form, but not the
 // color of the error-texts.
 #almaUserRegistration .help-block:not(.with-errors) {
-    color: #6f757c;
+    color: #333;
 }
 
 // Remove margin of the password hint in the "create new user" form.

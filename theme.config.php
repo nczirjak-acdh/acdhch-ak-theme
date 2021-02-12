@@ -1,5 +1,6 @@
 <?php
 
+echo class_exists('VuFind\View\Helper\Root\RecordDataFormatter');
 return [
     'extends' => 'bootstrap3',
     'favicon' => 'acdhch-favicon.ico',

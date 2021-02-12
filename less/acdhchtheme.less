@@ -9,14 +9,7 @@
 
 // Custom variables
 @font-size-larger:        ceil((@font-size-base * 1.2));
-.active-filters .facet, .facet-group .active {
-    background-color: #6f757c;
-}
 
-.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
-    background-color: #88dbdf;
-    border-color: #88dbdf;
-}
 .navbar-brand {
     height: auto; // Making space for AKsearch Logo
     padding-left: 0; // Align AKsearch Logo with Search field
@@ -26,7 +19,7 @@
     background: none repeat scroll 0 0 #88dbdf; // Background color
     padding: 8px 0 8px 0; // Padding top and bottom of red bar
     width: 100vw; // 100% viewport width - span bar on whole site width
-    
+
     // Fix left margin:
     margin-left: -50vw;
     left: 50%;
@@ -102,47 +95,47 @@ header .search.container.navbar {
 
 // General button style
 .btn, .reset-filters-btn {
-	margin-bottom: 0;
-	font-weight: normal;
-	text-align: center;
-	vertical-align: middle;
-	cursor: pointer;
-	background-image: none;
-	white-space: nowrap;
-	font-size: 14px;
-	border-radius: 0px;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
-	border: 0px solid transparent;
-	height: 24px;
-	line-height: 25px;
-	margin: 1px 0 0;
-	padding: 0px 6px 6px 6px;
+    margin-bottom: 0;
+    font-weight: normal;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    white-space: nowrap;
+    font-size: 14px;
+    border-radius: 0px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 0px solid transparent;
+    height: 24px;
+    line-height: 25px;
+    margin: 1px 0 0;
+    padding: 0px 6px 6px 6px;
 }
 
 // Base layout for gray/red buttons
 .btn:not(.btn-link), .reset-filters-btn {
-	font-weight: bold;
-	color: #fff;
-	background-color: #6f757c;
-	border-color: #e0e0e0;
+    font-weight: bold;
+    color: #fff;
+    background-color: #333;
+    border-color: #e0e0e0;
 }
 
 // Hover, focus and active layout for gray/red buttons
 .btn:not(.btn-link):hover, .btn:not(.btn-link):focus, .btn:not(.btn-link):active {
-	background-color: #88dbdf;
-	border-color: #6f757c;
-	color: #fff;
-	outline: none;
+    background-color: #88dbdf;
+    border-color: #333;
+    color: #fff;
+    outline: none;
 }
 
 // "Reset filter" button in the search bar. The dark-gray background color
 // of our buttons is used (see general .btn style above). This is the hover,
 // focuse and acitve style. No visible changes will be seen on this actions.
 .reset-filters-btn:hover, .reset-filters-btn:active, .reset-filters-btn:focus {
-    background-color: #6f757c;
+    background-color: #333;
     color: #fff;
     text-decoration: none;
     outline: none;
@@ -151,7 +144,7 @@ header .search.container.navbar {
 // "Active filter" indicators in search bar. We use the dark-gray background color
 // of our buttons for them.
 .active-filters .filters .filter-value {
-	background: #6f757c;
+    background: #333;
 }
 
 // Style for the "remove" X for "active filter" indicators in the search bar
@@ -180,20 +173,20 @@ header .search.container.navbar {
 // field.
 .adv-search .adv-term-remove:hover {
     text-decoration: none;
-    color: #6f757c;
+    color: #333;
     opacity: .8;
 }
 
 // Style for handlers in slider for publication year filter
 .slider-container .slider-handle {
-	background: #6f757c;
-	border: 1px solid #6f757c;
+    background: #333;
+    border: 1px solid #333;
 }
 .slider-container .slider-handle:hover,
 .slider-container .slider-handle:active,
 .slider-container .slider-handle:focus {
-	background: #88dbdf;
-	border-color: #6f757c;
+    background: #88dbdf;
+    border-color: #333;
 }
 
 // A spacer between the title (including parent title) and the rest of the data in the results list
@@ -209,7 +202,7 @@ header .search.container.navbar {
 
 // Set color for star at "Add favourite" to gray
 .result-links .fa-star::before {
-	color: #6f757c;
+    color: #333;
 }
 
 // TODO: Here are some tests concerning shortening long lines in the results list with ellipsis. See file "result-list.phtml".
@@ -223,31 +216,31 @@ header .search.container.navbar {
     width: 100%;
 }
 .media-left, .media-right, .media-body {
-	display: block;
+        display: block;
 }
 .record .media-left, .result .media-left, .record .media-right, .result .media-right {
-	max-width: 10%;
-	float: left;
+        max-width: 10%;
+        float: left;
 }
 .record .media-left, .result .media-left {
-	margin-right: 1%;
+        margin-right: 1%;
 }
 .media-left, .media > .pull-left {
-	padding-right: 1%;
+        padding-right: 1%;
 }
 .media-body {
     width: 88%;
-	max-width: 88% !important;
+        max-width: 88% !important;
 }
 .result-body {
-	float: left;
-	width: 80%;
+        float: left;
+        width: 80%;
 }
 .result-links {
-	float: left;
-	width: 20%;
-	padding: 0;
-	text-align: right;
+        float: left;
+        width: 20%;
+        padding: 0;
+        text-align: right;
 }
 */
 
@@ -317,21 +310,21 @@ header .search.container.navbar {
 
 // Padding for item notes in the tables of the "holdings ILS" tab
 .item-notes ul {
-	padding-left: 1rem;
+    padding-left: 1rem;
 }
 
 // Styling search button
 #searchForm .btn-primary {
     background-color: white;
     text-decoration: none;
-    color: #6f757c;
+    color: #333;
 }
 
 // Styling link to advanced search form
 #searchForm .btn-link {
-	background-color: none;
-	color: #fff;
-	outline: none;
+    background-color: none;
+    color: #fff;
+    outline: none;
 }
 
 // Stretching facet select boxes on new items search page and adding some space
@@ -367,7 +360,7 @@ header .search.container.navbar {
 // Matomo Opt-Out iFrame on privacy page
 #matomoOptOut {
     border: grey thin solid;
-    color: #6f757c;
+    color: #333;
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 14px;
     height: 200px;
@@ -390,7 +383,7 @@ header .search.container.navbar {
 // Set color for the password hint in the "create new user" form, but not the
 // color of the error-texts.
 #almaUserRegistration .help-block:not(.with-errors) {
-    color: #6f757c;
+    color: #333;
 }
 
 // Remove margin of the password hint in the "create new user" form.
@@ -502,7 +495,7 @@ header .search.container.navbar {
 
 // Smaller facet boxes on "advanced search" page for placing 5 containers side by side
 .solr-adv-facet {
-	flex: 1 20%;
+    flex: 1 20%;
 }
 
 // Put search button to the right and "clear fields" button to the left on "advanced search" page
@@ -548,7 +541,7 @@ header .search.container.navbar {
 @media (min-width:768px) {
     .container {
         width: 85%; // Overall width
-        
+
     }
 
     .akSearchboxBackground #searchForm_lookfor {
@@ -593,3 +586,120 @@ header .search.container.navbar {
         hyphens: auto;
     }
 }
+
+.main-footer {
+    background-color: #FFFFFF;
+    display: inline-block;
+    width: 100%;
+    z-index: 3;
+    position: relative;
+    border-top: 2px solid #F1F1F1;
+    margin-top: 0px; 
+}
+.main-footer .footer-wrapper {
+    padding: 25px 20px 50px 20px;
+    display: inline-block;
+    width: 100%; 
+}
+.main-footer .footer-wrapper .footer-social {
+    text-align: right; 
+}
+.main-footer .footer-wrapper .footer-social a {
+    font-size: 24px;
+    color: #333333;
+    margin-left: 15px; 
+}
+.main-footer .footer-wrapper .navbar {
+    float: right;
+    padding-right: 0; 
+}
+
+.footer-sep {
+    border-bottom: 1px solid #333333;
+    padding-bottom: 15px;
+    padding-top: 5px;
+    margin-bottom: 35px;
+    font-weight: 600;
+    font-size: 14px; 
+}
+
+.footer-sep i {
+    font-size: 20px;
+    padding-right: 5px; 
+}
+
+footer .el-block.first {
+    padding-left: 0; 
+}
+
+footer .el-block.last {
+    padding-right: 0;
+    float: right; 
+}
+
+.helpdesk-button {
+    display: block;
+    background-color: #FFFFFF;
+    border: 1px solid #88DBDF;
+    border-radius: 20px;
+    padding: 5px 20px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #88DBDF;
+    transition: background-color ease .2s, color ease .2s; 
+}
+
+.helpdesk-button:hover, .helpdesk-button:focus {
+    background-color: #88DBDF;
+    color: #FFFFFF;
+    transition: background-color ease .2s, color ease .2s;
+}
+
+footer .bodytext {
+    font-size: 15px; }
+
+.csc-textpic-text {
+    padding-left: 20px;
+}
+
+footer h3 {
+    font-size: 17px;
+}
+
+.footer-login-button {
+    float: right;
+    margin-left: 8px; }
+
+.footer-login-button i {
+    color: #88DBDF;
+    font-size: 22px;
+    margin-top: 6px;
+    transition: color ease .2s; }
+
+.footer-login-button i:hover, .footer-login-button i:focus {
+    color: #3B89AD; }
+
+.footer-imprint-bar {
+    text-align: center;
+    background-color: #F1F1F1;
+    padding: 8px;
+    font-size: 14px; }
+
+.footer-brand {
+    border: 0; }
+
+footer .el-block.first {
+    padding-left: 0;
+    display: flex; }
+
+
+@media (max-width: 1199px) {
+    .vert-divider {
+        margin-left: 220px; }
+
+    .start_right_block .col-block-wrapper h3 img {
+        width: 145px; }
+
+    footer .el-block.col-md-3.first {
+        flex: 0 0 30%;
+        max-width: 30%; } }

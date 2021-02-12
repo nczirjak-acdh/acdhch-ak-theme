@@ -1,0 +1,15 @@
+<?php
+    // Set up page title:
+    $this->headTitle($this->translate('imprint'));
+?>
+
+    <div id="imprint-content">
+<?php
+  $params = http_build_query(array(
+      'serviceID' => '8009',
+      'outputLang' => 'en'
+  ));
+  $response = file_get_contents('https://shared.acdh.oeaw.ac.at/acdh-common-assets/api/imprint.php?'.$params);
+  echo $response;
+?>
+</div><!-- #imprint-content -->

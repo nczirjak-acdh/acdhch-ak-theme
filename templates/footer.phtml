@@ -1,36 +1,37 @@
-<footer class="hidden-print">
-  <div class="footer-container">
-    <div class="footer-column">
-      <p><strong><?=$this->transEsc('Search Options')?></strong></p>
-      <ul>
-        <li><a href="<?=$this->url('search-history')?>"><?=$this->transEsc('Search History')?></a></li>
-        <li><a href="<?=$this->url('search-advanced')?>"><?=$this->transEsc('Advanced Search')?></a></li>
-      </ul>
+<footer class="main-footer" role="contentinfo">
+    <div class="container">
+    	<div class="footer-wrapper">
+            
+            <div class="footer-sep">
+                <i class="fa fa-comment-o" aria-hidden="true"></i><?=$this->transEsc('Contact')?>
+            </div>
+
+            <div class="el-block col-lg-6 col-md-6 first">
+                  <a href="https://www.oeaw.ac.at/acdh/" style="border-bottom: none !important;"><img src="https://fundament.acdh.oeaw.ac.at/common-assets/images/acdh_logo.svg" class="image" alt="ACDH Logo" style="max-width: 100%; height: auto;" title="ACDH Logo"></a>
+              <div class="csc-textpic-text">
+                  <p class="bodytext">                      
+                    ACDH-CH
+                    <br>
+                    Austrian Centre for Digital Humanities <br/> and Cultural Heritage
+                    <br>
+                    Austrian Academy of Sciences
+                  </p>
+                  <p class="bodytext">Sonnenfelsgasse 19<br>1010 Vienna
+                  </p>
+                  <p class="bodytext">T: +43 1 51581-2200<br>E: <a style="font-weight:600;" href="mailto:acdh@oeaw.ac.at">acdh(at)oeaw.ac.at</a></p>
+              </div>
+            </div>
+
+            <div class="el-block col-md-3 last">
+                <h3><?=$this->transEsc('HELPDESK')?></h3>
+                <p class="bodytext">
+                    <?=$this->transEsc('ACDH-CH runs a helpdesk offering advice for questions related to various digital humanities topics.')?>
+                </p>
+                <p class="bodytext"><a href="mailto:acdh-helpdesk@oeaw.ac.at" class="helpdesk-button"><?=$this->transEsc('ASK US!')?></a></p>
+            </div>
+        </div>    
     </div>
-    <div class="footer-column">
-      <p><strong><?=$this->transEsc('Find More')?></strong></p>
-      <ul>
-        <li><a href="<?=$this->url('browse-home')?>"><?=$this->transEsc('Browse the Catalog')?></a></li>
-        <li><a href="<?=$this->url('alphabrowse-home')?>"><?=$this->transEsc('Browse Alphabetically')?></a></li>
-        <?php // AK: Removing "Channel Explore" and "Course Reserve" links ?>
-        <?php /* <li><a href="<?=$this->url('channels-home')?>"><?=$this->transEsc('channel_explore')?></a></li>
-        <li><a href="<?=$this->url('search-reserves')?>"><?=$this->transEsc('Course Reserves')?></a></li> */ ?>
-        <li><a href="<?=$this->url('search-newitem')?>"><?=$this->transEsc('New Items')?></a></li>
-      </ul>
+    <div class="footer-imprint-bar">
+    	© Copyright OEAW | <a href="<?=$this->url('content-page', ['page' => 'imprint']) ?>"><?=$this->transEsc('Impressum/Imprint')?></a>
     </div>
-    <div class="footer-column">
-      <p><strong><?=$this->transEsc('Need Help?')?></strong></p>
-      <ul>
-        <li><a href="<?=$this->url('help-home')?>?topic=search&amp;_=<?=time() ?>" data-lightbox class="help-link"><?=$this->transEsc('Search Tips')?></a></li>
-        <?php // AK: Linking to custom content pages ?>
-        <li><a href="<?=$this->url('content-page', ['page' => 'about']) ?>"><?=$this->transEsc('about')?></a></li>
-        <li><a href="<?=$this->url('content-page', ['page' => 'privacy']) ?>"><?=$this->transEsc('privacy_statement')?></a></li>
-        <?php // AK: Linking to library website ?>
-        <li><a href="https://wien.arbeiterkammer.at/service/bibliothek" target="_blank">AK Bibliothek Wien</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="poweredby">
-    <?=$this->layout()->poweredBy ?>
-  </div>
 </footer>

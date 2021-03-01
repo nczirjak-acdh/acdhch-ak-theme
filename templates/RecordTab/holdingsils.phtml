@@ -332,7 +332,7 @@
                   <?php if ($blocks): ?>
                     <?=$this->transEsc('account_block_no_holds')?>
                   <?php // Show location text ?>
-                  <?php elseif ($item['locationtext']): ?>
+                  <?php elseif (isset($item['locationtext'])): ?>
                     <?=$this->transEsc($item['locationtext'])?>
                   <?php else: ?>
                     <?php // Show login button or warning about missing ILS account ?>

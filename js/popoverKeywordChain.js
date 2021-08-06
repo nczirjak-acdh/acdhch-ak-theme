@@ -14,7 +14,6 @@ $(document).ready(function () {
             var keywordLink = $(this).data('keyword-link');
             var keywordchainSeparated = $(this).data('keywordchain-separated');
             var keywordchainLink = $(this).data('keywordchain-link');
-            //console.log(keywordchainSeparated);
             return '<div class="popoverEntry">'
                 + VuFind.translate('currentTerm')+':<br />'
                 + '<a href="'+keywordLink+'">'+keyword+'</a>'

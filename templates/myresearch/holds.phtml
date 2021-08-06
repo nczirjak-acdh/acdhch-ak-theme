@@ -4,6 +4,8 @@
 
   // Set up breadcrumbs:
   $this->layout()->breadcrumbs = '<li><a href="' . $this->url('myresearch-home') . '">' . $this->transEsc('Your Account') . '</a></li> <li class="active">' . $this->transEsc('My Holds') . '</li>';
+
+  $this->headScript()->appendFile('requests.js');
 ?>
 
 <a class="search-filter-toggle visible-xs" href="#myresearch-sidebar" data-toggle="offcanvas" title="Expand Sidebar">
@@ -23,19 +25,19 @@
         <input type="hidden" id="submitType" name="cancelSelected" value="1"/>
         <input type="hidden" id="cancelConfirm" name="confirm" value="0"/>
         <div class="btn-group">
-          <input id="cancelSelected" name="cancelSelected" type="submit" value="<?=$this->transEsc("hold_cancel_selected") ?>" class="btn btn-default dropdown-toggle" data-toggle="dropdown"/>
+          <input id="cancelSelected" name="cancelSelected" type="submit" value="<?=$this->transEscAttr("hold_cancel_selected") ?>" class="btn btn-default dropdown-toggle" data-toggle="dropdown"/>
           <ul class="dropdown-menu">
             <li class="disabled"><a><?=$this->transEsc("confirm_hold_cancel_selected_text") ?></a></li>
-            <li><a href="#" onClick="$('#cancelConfirm').val(1);$('#submitType').attr('name','cancelSelected');$(this).parents('form').submit(); return false;"><?=$this->transEsc('confirm_dialog_yes') ?></a></li>
-            <li><a href="#" onClick="return false;"><?=$this->transEsc('confirm_dialog_no')?></a></li>
+            <li><a href="#" id="confirm_cancel_selected_yes"><?=$this->transEsc('confirm_dialog_yes') ?></a></li>
+            <li><a href="#" class="confirm_cancel_no"><?=$this->transEsc('confirm_dialog_no')?></a></li>
           </ul>
         </div>
         <div class="btn-group">
-          <input id="cancelAll" name="cancelAll" type="submit" value="<?=$this->transEsc("hold_cancel_all") ?>" class="btn btn-default dropdown-toggle" data-toggle="dropdown"/>
+          <input id="cancelAll" name="cancelAll" type="submit" value="<?=$this->transEscAttr("hold_cancel_all") ?>" class="btn btn-default dropdown-toggle" data-toggle="dropdown"/>
           <ul class="dropdown-menu">
             <li class="disabled"><a><?=$this->transEsc("confirm_hold_cancel_all_text") ?></a></li>
-            <li><a href="#" onClick="$('#cancelConfirm').val(1);$('#submitType').attr('name','cancelAll');$(this).parents('form').submit(); return false;"><?=$this->transEsc('confirm_dialog_yes') ?></a></li>
-            <li><a href="#" onClick="return false;"><?=$this->transEsc('confirm_dialog_no')?></a></li>
+            <li><a href="#" id="confirm_cancel_all_yes"><?=$this->transEsc('confirm_dialog_yes') ?></a></li>
+            <li><a href="#" class="confirm_cancel_no"><?=$this->transEsc('confirm_dialog_no')?></a></li>
           </ul>
         </div>
     <?php endif; ?>
@@ -101,7 +103,7 @@
                   $pntVolNo = $value['volNo'] ?? null;
                   $pntTitle = $value['title'] ?? null;
                   $pntId    = $value['id'] ?? null;
-                  $isDepLit = strpos(strtolower($resource->getFormat()), 'dependentliterature') === false ? false : true;
+                  $isDepLit = strpos(strtolower($resource->tryMethod('getFormat')), 'dependentliterature') === false ? false : true;
                 ?>
                 <?php if ($pntTitle): ?>
                   <span title="<?=((!$isDepLit && $pntVolNo) ? $this->transEsc('volume').' '.$this->escapeHtml($pntVolNo).' '.$this->transEsc('from') : $this->transEsc('In')) .': '.$this->escapeHtml($pntTitle)?>">
@@ -158,7 +160,7 @@
                 <?=$doi->renderTemplate()?>
               <?php endif; ?>
               <?php // AK: Custom URL display ?>
-              <?php if (!is_array($urls)) $urls = []; if(!$resource->isCollection()): ?>
+              <?php if (!is_array($urls)) $urls = []; if(!$resource->tryMethod('isCollection')): ?>
               <b><?=$this->transEsc('links')?>:</b>
               <?php $urlCount = count($urls); foreach ($urls as $i => $current): ?>
                 <?php // TODO: AK: These are not only fulltext URLs! ?>
@@ -182,7 +184,8 @@
                 <br />
               <?php endif; ?>
 
-              <?php // Depending on the ILS driver, the "location" value may be a string or an ID; figure out the best value to display. ?>
+              <?php /* Depending on the ILS driver, the "location" value may be a string or an ID; figure out the best
+               value to display... */ ?>
               <?php $pickupDisplay = ''; ?>
               <?php $pickupTranslate = false; ?>
               <?php if (isset($ilsDetails['location'])): ?>
@@ -260,3 +263,5 @@
 <div class="<?=$this->layoutClass('sidebar')?>" id="myresearch-sidebar">
   <?=$this->context($this)->renderInContext("myresearch/menu.phtml", ['active' => 'holds'])?>
 </div>
+
+<?=$this->render('myresearch/notify-account-status.phtml', ['method' => 'holds', 'accountStatus' => $this->accountStatus]); ?>

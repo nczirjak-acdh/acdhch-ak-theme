@@ -3,10 +3,9 @@
 $procNotes = $this->driver->tryMethod('getMeetingNames');
 $dissNotes = $this->driver->tryMethod('getDissertationNotes');
 
-// A driver-specific template may pass in format overrides; check for these before
-// going to the driver itself:
-$formats = isset($this->overrideFormats) ? $this->overrideFormats :
-    $this->driver->tryMethod('getFormats');
+// A driver-specific template may pass in format overrides; check for these before going to the driver itself:
+$formats = $this->slot('endnote-formats')->get($this->driver->tryMethod('getFormats'));
+
 
 // Initialize format variable
 $format = null;

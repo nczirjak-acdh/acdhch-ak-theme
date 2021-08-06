@@ -20,7 +20,7 @@
 <?php else: ?>
     <form id="change-user-data" class="form-change-user-data" action="<?=$this->url('myresearch-changeuserdata') ?>" method="post" role="form">
         <?=$this->auth()->getChangeUserdataForm() ?>
-        <?=$this->recaptcha()->html($this->useCaptcha) ?>
+        <?=$this->captcha()->html($this->useCaptcha) ?>
         <div class="form-group">
             <input class="btn btn-primary" name="submit" type="submit" value="<?=$this->transEsc('Submit')?>" />
         </div>

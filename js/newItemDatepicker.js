@@ -63,7 +63,6 @@ $(document).ready(function () {
       var localISOTime = (new Date(firstHourOfDay - timeZoneOffset)).toISOString();
       $('#datePickerFromHidden').val(localISOTime);
     }
-
   });
 
   /**

@@ -25,11 +25,11 @@
     // "data-lightbox-ignore" makes the link close the lightbox and open the target
     // on the main page.
     ?>
-    <a class="btn pull-right" href="<?=$this->url('myresearch-home')?>" data-lightbox-ignore title="<?=$this->transEsc('toAccount')?>"><?=$this->transEsc('toAccount')?></a>
+    <a class="btn pull-right" href="<?=$this->url('myresearch-home')?>" data-lightbox-ignore title="<?=$this->transEscAttr('toAccount')?>"><?=$this->transEsc('toAccount')?></a>
 </div>
 
 <?php
 // AK: Refresh page on closing the welcome page in the lightbox
 $script = 'VuFind.lightbox.refreshOnClose = true;';
-echo $this->inlineScript(\Zend\View\Helper\HeadScript::SCRIPT, $script, 'SET');
+echo $this->inlineScript(\Laminas\View\Helper\HeadScript::SCRIPT, $script, 'SET');
 ?>

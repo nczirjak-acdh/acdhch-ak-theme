@@ -6,7 +6,6 @@ $(document).ready(function () {
     var scriptTag = $('script[src*=newUserDatepicker]');
     var dateformat = scriptTag.attr('dateformat');
     var language = scriptTag.attr('language');
-
     $('#birthdayDatePicker').datepicker({
         format: dateformat,
         language: language,
@@ -17,6 +16,4 @@ $(document).ready(function () {
         disableTouchKeyboard: true,
         enableOnReadonly: true
     });
-
-
 });

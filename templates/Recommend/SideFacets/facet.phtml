@@ -36,7 +36,8 @@
         'allowExclude' => $this->recommend->excludeAllowed($facet),
         'title' => $facet,
         'sortOptions' => $hierarchicalFacetSortOptions[$facet] ?? $hierarchicalFacetSortOptions['*'] ?? null,
-        'collapsedFacets' => $this->collapsedFacets
+        'collapsedFacets' => $this->collapsedFacets,
+        'results' => $this->results
       ]
     ); ?>
     <noscript>
@@ -74,7 +75,7 @@
       ]
     ); ?>
   <?php endif; ?>
-  <?php if ($isHierarchical): // close tag opened in matching if above. ?>
+  <?php if ($isHierarchical): // close tag opened in matching if above ?>
     </noscript>
   <?php endif; ?>
 <?php endif; ?>

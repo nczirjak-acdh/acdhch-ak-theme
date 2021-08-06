@@ -49,13 +49,14 @@
             <input type="checkbox" name="selectAll" class="checkbox-select-all"/>
             <?=$this->transEsc('select_page')?>
           </label>
-          <input type="submit" class="btn btn-default" id="renewSelected" name="renewSelected" value="<?=$this->transEsc("renew_selected")?>" />
+          <input type="submit" class="btn btn-default" id="renewSelected" name="renewSelected" value="<?=$this->transEscAttr("renew_selected")?>" />
           <?php if ($renewAll): ?>
-            <input type="submit" class="btn btn-default" id="renewAll" name="renewAll" value="<?=$this->transEsc('renew_all')?>" />
+            <input type="submit" class="btn btn-default" id="renewAll" name="renewAll" value="<?=$this->transEscAttr('renew_all')?>" />
           <?php endif; ?>
         </div>
       </div>
     <?php endif; ?>
+
 
     <?php foreach ($hiddenTransactions as $ilsDetails): ?>
       <?php if (isset($this->renewResult[$ilsDetails['item_id']])): ?>
@@ -131,12 +132,12 @@
             <?php // AK: Space between title (and parent data if applicable) and the rest of the data ?>
             <div class="spacer">
               <?php // AK: Show parent data. Replaces "Published in" from original VuFind code. ?>
-              <?php foreach ($data = ($resource->getConsolidatedParents() ?? []) as $key => $value): ?>
+              <?php foreach ($data = ($resource->tryMethod('getConsolidatedParents') ?? []) as $key => $value): ?>
                 <?php // AK: Get some values about the parent if there is one
                   $pntVolNo = $value['volNo'] ?? null;
                   $pntTitle = $value['title'] ?? null;
                   $pntId    = $value['id'] ?? null;
-                  $isDepLit = strpos(strtolower($resource->getFormat()), 'dependentliterature') === false ? false : true;
+                  $isDepLit = strpos(strtolower($resource->tryMethod('getFormat')), 'dependentliterature') === false ? false : true;
                 ?>
                 <?php if ($pntTitle): ?>
                   <span title="<?=((!$isDepLit && $pntVolNo) ? $this->transEsc('volume').' '.$this->escapeHtml($pntVolNo).' '.$this->transEsc('from') : $this->transEsc('In')) .': '.$this->escapeHtml($pntTitle)?>">
@@ -149,7 +150,7 @@
             </div>
 
             <?php // AK: Get all contributors ?>
-            <?php $summAuthors = $resource->getContributors(); if (!empty($summAuthors)): ?>
+            <?php $summAuthors = $resource->tryMethod('getContributors'); if (!empty($summAuthors)): ?>
               <span title="<?=implode('; ', $summAuthors)?>">
                 <b><?=$this->transEsc('participants')?>:</b>
                 <?php $authorCount = count($summAuthors); ?>
@@ -164,13 +165,13 @@
             <?php if (!empty($pubYear = $ilsDetails['publication_year'])): ?>
               <strong><?=$this->transEsc('Published')?>:</strong> <?=$this->escapeHtml($pubYear)?>
               <br />
-            <?php elseif (!empty($pubYear = $resource->getPublicationDates())): ?>
+            <?php elseif (!empty($pubYear = $resource->tryMethod('getPublicationDates'))): ?>
               <strong><?=$this->transEsc('Published')?>:</strong> <?=$this->escapeHtml(implode('; ', $pubYear))?>
               <br />
             <?php endif; ?>
 
             <?php // AK: Get publishers ?>
-            <?php if (!empty($publishers = $resource->getPublishers())): ?>
+            <?php if (!empty($publishers = $resource->tryMethod('getPublishers'))): ?>
               <b><?=$this->transEsc('Publisher')?>:</b> <?=join('; ', $publishers)?>
               <br />
             <?php endif; ?>
@@ -201,7 +202,7 @@
                 <?=$doi->renderTemplate()?>
               <?php endif; ?>
               <?php // AK: Custom URL display ?>
-              <?php if (!is_array($urls)) $urls = []; if(!$resource->isCollection()): ?>
+              <?php if (!is_array($urls)) $urls = []; if(!$resource->tryMethod('isCollection')): ?>
               <b><?=$this->transEsc('links')?>:</b>
               <?php $urlCount = count($urls); foreach ($urls as $i => $current): ?>
                 <?php // TODO: AK: These are not only fulltext URLs! ?>
@@ -212,7 +213,7 @@
 
             <?php // AK: Added spacer ?>
             <div class="spacer">
-              <?php if (count($resource->getFormats()) > 0): ?>
+              <?php if (count($resource->tryMethod('getFormats')) > 0): ?>
                 <?=$this->record($resource)->getFormatList() ?>
                 <br/>
               <?php endif; ?>
@@ -299,3 +300,5 @@
 <div class="<?=$this->layoutClass('sidebar')?>" id="myresearch-sidebar">
   <?=$this->context($this)->renderInContext("myresearch/menu.phtml", ['active' => 'checkedout'])?>
 </div>
+
+<?=$this->render('myresearch/notify-account-status.phtml', ['method' => 'checkedOut', 'accountStatus' => $this->accountStatus]); ?>

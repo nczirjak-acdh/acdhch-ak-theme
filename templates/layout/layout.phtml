@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
     <?=$this->headMeta()?>
     <?=$this->headTitle()?>
+    <?php $this->headScript()->appendFile('https://ltfl.librarything.com/forlibraries/widget.js?id=6916-3596170325'); ?>
     <?php
       // Set up OpenSearch link:
       $this->headLink(
@@ -200,7 +201,12 @@ JS;
     </nav>
     <div role="main" class="main">
       <div id="content" class="container">
+          
         <?=$this->layout()->content ?>
+          <?php if(isset($this->templateName) && strtolower($this->templateName) == "home"): ?>
+              <div class="ltfl_bookdisplay_widget" id="ltfl_widget_ult_1652612951"></div>
+        <?php endif; ?>
+             
       </div>
     </div>
     <?=$this->render('footer.phtml')?>
